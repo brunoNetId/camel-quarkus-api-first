@@ -1,0 +1,144 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Individual",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080/camel",
+            "description": "Local host, for development"
+        }
+    ],
+    "paths": {
+        "/individual/details/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "identifier of individual to retrieve",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IndividualDetails"
+                                },
+                                "examples": {
+                                    "individual": {
+                                        "value": {
+                                            "fullName": "some text",
+                                            "passportId": "123456789-A",
+                                            "addressLine1": "some text",
+                                            "addressLine2": "some text",
+                                            "addressLine3": "some text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "success"
+                    }
+                },
+                "operationId": "getDetails"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/individual/anonymous/details/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "identifier of individual to retrieve",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IndividualDetails"
+                                },
+                                "examples": {
+                                    "individual": {
+                                        "value": {
+                                            "fullName": "some text",
+                                            "passportId": "123456789-A",
+                                            "addressLine1": "some text",
+                                            "addressLine2": "some text",
+                                            "addressLine3": "some text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "success"
+                    }
+                },
+                "operationId": "getAnonymousDetails"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        }
+    },
+    "components": {
+        "schemas": {
+            "IndividualDetails": {
+                "title": "Root Type for IndividualDetails",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "passportId": {
+                        "type": "string"
+                    },
+                    "addressLine1": {
+                        "type": "string"
+                    },
+                    "addressLine2": {
+                        "type": "string"
+                    },
+                    "addressLine3": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "fullName": "Some One",
+                    "passportId": "123456789-A",
+                    "addressLine1": "1 Some Street",
+                    "addressLine2": "Somewhere SOME C0D3",
+                    "addressLine3": "UK"
+                }
+            }
+        }
+    }
+}
